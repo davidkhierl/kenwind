@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface AppProps {
+  className?: string;
 }
+
+const AppContainer: React.FC<AppProps> = (props) => {
+  return <div className={props.className}>{props.children}</div>;
+};
+
+const StyledAppContainer = styled(AppContainer)<{ customColor?: string }>`
+  color: ${(props) =>
+    props.customColor ? props.customColor : props.theme.colors.secondary};
+`;
+
+const Text: React.FC = ({ children }) => <h1>{children}</h1>;
+
+const App = () => {
+  return (
+    <StyledAppContainer customColor="blue">
+      <Text>Hello World!</Text>
+    </StyledAppContainer>
+  );
+};
 
 export default App;
