@@ -1,0 +1,60 @@
+/* ---------------------------------- Theme --------------------------------- */
+
+$base-theme: Default;
+$skin-name: ams-fsx-default;
+$swatch-name: Default;
+$border-radius: 8px;
+$primary: #384e6e;
+$info: #3e80ed;
+$success: #85d871;
+$warning: #ffbc1c;
+$error: #e65050;
+$text-color: #333333;
+$bg-color: #ffffff;
+$base-text: #333333;
+$base-bg: #ffffff;
+$hovered-text: #333333;
+$hovered-bg: darken($base-bg, 3%);
+$selected-text: #ffffff;
+$selected-bg: #384e6e;
+$series-a: #384e6e;
+$series-b: #00bbf0;
+$series-c: #61b15a;
+$series-d: #fd8c04;
+$series-e: #ec5858;
+$series-f: #aa46be;
+
+// Custom theme
+$base-border: darken($base-bg, 8%);
+$hovered-border: $base-border;
+
+$transition: color 1s ease-in-out, background-color 1s ease-in-out, border-color 1s ease-in-out,
+  box-shadow 1s ease-in-out;
+
+/* --------------------------------- common --------------------------------- */
+
+$base-gradient: none;
+$hovered-gradient: none;
+$padding-x: 12px;
+$padding-y: 8px;
+
+// TODO: refactor
+$focused-shadow: none;
+$primary-focused-shadow: none;
+
+/* --------------------------------- Button --------------------------------- */
+$button-bg: $base-bg;
+$button-focused-shadow: none;
+$button-pressed-bg: darken($button-bg, 6%);
+$button-pressed-shadow: none;
+
+// Primary
+$primary-button-bg: $primary;
+$primary-button-focused-shadow: none;
+$primary-button-gradient: none;
+$primary-button-hovered-bg: lighten($primary-button-bg, 8%);
+$primary-button-hovered-gradient: none;
+$primary-button-pressed-shadow: none;
+
+/* ---------------------------------- Input --------------------------------- */
+$input-focused-shadow: none;

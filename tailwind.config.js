@@ -1,5 +1,6 @@
 const glob = require("glob-all");
 const paths = require("react-scripts/config/paths");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   purge: [
@@ -9,6 +10,9 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: ["Roboto", ...defaultTheme.fontFamily.sans],
+    },
     extend: {},
   },
   variants: {
