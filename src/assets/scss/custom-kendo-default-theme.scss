@@ -28,8 +28,8 @@ $series-f: #aa46be;
 $base-border: darken($base-bg, 8%);
 $hovered-border: $base-border;
 
-$transition: color 1s ease-in-out, background-color 1s ease-in-out, border-color 1s ease-in-out,
-  box-shadow 1s ease-in-out;
+$transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out,
+  border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
 /* --------------------------------- common --------------------------------- */
 
@@ -55,6 +55,10 @@ $primary-button-gradient: none;
 $primary-button-hovered-bg: lighten($primary-button-bg, 8%);
 $primary-button-hovered-gradient: none;
 $primary-button-pressed-shadow: none;
+
+.k-button {
+  transition: $transition;
+}
 
 /* ---------------------------------- Input --------------------------------- */
 $input-focused-shadow: none;

@@ -16,13 +16,21 @@
 /*                                 Kendo Theme                                */
 /* -------------------------------------------------------------------------- */
 
-// theme variables
-@import "variables.scss";
+// custom default theme
+@import "custom-kendo-default-theme.scss";
 
 // components
-@import "~@progress/kendo-theme-default/scss/all";
+// @import "~@progress/kendo-theme-default/scss/all";
+@import "~@progress/kendo-theme-default/scss/button";
+@import "~@progress/kendo-theme-default/scss/tooltip";
 
 /* -------------------------------------------------------------------------- */
-/*                                     App                                    */
+/*                                    Main                                    */
 /* -------------------------------------------------------------------------- */
-@import "app";
+
+// use this when using fontawesome icon in buttons
+.btn-fa {
+  & span {
+    margin: 0 6px 0 -6px;
+  }
+}
