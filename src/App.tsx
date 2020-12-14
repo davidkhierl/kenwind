@@ -1,41 +1,57 @@
-import { Button, ButtonGroup } from "@progress/kendo-react-buttons";
+import NavigationPanel, { NavigationRoute } from './components/NavigationPanel';
+import { Route, Switch } from 'react-router-dom';
 
-import ComponentCard from "./components/ComponentCard";
-import React from "react";
-import sharingImg from "./assets/images/sharing.png";
+import ButtonPage from './pages/ButtonPage';
+import React from 'react';
 
 const App = () => {
+  const appRoutes: NavigationRoute[] = [
+    { title: 'Kenwind', route: '/' },
+    {
+      title: 'Components',
+      route: '/components',
+      subRoutes: [
+        { title: 'Buttons', route: '/button' },
+        { title: 'Dropdowns', route: '/dropdown' },
+      ],
+    },
+    { title: 'Usage', route: '/usage' },
+    {
+      title: 'Multi Nested',
+      route: '/nested',
+      subRoutes: [
+        { title: 'Item 1', route: '/1' },
+        { title: 'Item 2', route: '/2' },
+        { title: 'Item 3', route: '/3' },
+        {
+          title: 'Item 4',
+          route: '/4',
+          subRoutes: [
+            { title: 'Item 4.1', route: '/4.1' },
+            { title: 'Item 4.2', route: '/4.2' },
+            {
+              title: 'Item 4.3',
+              route: '/4.3',
+              subRoutes: [
+                { title: 'Item 5.1', route: '/5.1' },
+                { title: 'Item 5.2', route: '/5.2' },
+                { title: 'Item 5.2', route: '/5.3' },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ];
   return (
-    <div className='h-full pt-10'>
-      <div className='container mx-auto px-4 md:px-0'>
-        <div className='grid gap-y-6'>
-          <ComponentCard
-            title='Button'
-            refLink='https://www.telerik.com/kendo-react-ui/components/buttons/button/'>
-            <div className='grid gap-4 grid-cols-1 md:grid-cols-6 auto-rows-max '>
-              <Button>Default</Button>
-              <Button primary>Primary</Button>
-              <Button disabled>Disabled</Button>
-              <Button icon='k-icon k-i-share'>Kendo Icon</Button>
-              <Button imageUrl={sharingImg}>Image Icon</Button>
-              <Button iconClass='fas fa-share-alt' className='btn-fa'>
-                Fontawesome
-              </Button>
-              <Button togglable>Togglable</Button>
-              <Button togglable>Togglable</Button>
-              <Button look='flat'>Flat</Button>
-              <Button look='outline'>Outline</Button>
-              <Button look='clear'>Clear</Button>
-            </div>
-          </ComponentCard>
-          <ComponentCard title='ButtonGroup'>
-            <ButtonGroup>
-              <Button togglable>Button 1</Button>
-              <Button togglable>Button 2</Button>
-              <Button togglable>Button 3</Button>
-            </ButtonGroup>
-          </ComponentCard>
-        </div>
+    <div className='flex h-full pt-10'>
+      <div className='w-96'>
+        <NavigationPanel routes={appRoutes} />
+      </div>
+      <div className='container px-4 mx-auto'>
+        <Switch>
+          <Route path='/components/button' component={ButtonPage} />
+        </Switch>
       </div>
     </div>
   );

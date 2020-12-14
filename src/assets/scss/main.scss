@@ -2,27 +2,34 @@
 /*                                Google Fonts                                */
 /* -------------------------------------------------------------------------- */
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 /* -------------------------------------------------------------------------- */
 /*                                  Tailwind                                  */
 /* -------------------------------------------------------------------------- */
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /* -------------------------------------------------------------------------- */
 /*                                 Kendo Theme                                */
 /* -------------------------------------------------------------------------- */
 
 // custom default theme
-@import "custom-kendo-default-theme.scss";
+@import 'custom-kendo-default-theme.scss';
 
 // components
 // @import "~@progress/kendo-theme-default/scss/all";
-@import "~@progress/kendo-theme-default/scss/button";
-@import "~@progress/kendo-theme-default/scss/tooltip";
+// @import "~@progress/kendo-theme-default/scss/appbar";
+@import '~@progress/kendo-theme-default/scss/button';
+// @import "~@progress/kendo-theme-default/scss/card";
+// @import "~@progress/kendo-theme-default/scss/drawer";
+// @import "~@progress/kendo-theme-default/scss/menu";
+
+@import '~@progress/kendo-theme-default/scss/panelbar';
+// @import '~@progress/kendo-theme-default/scss/progressbar';
+@import '~@progress/kendo-theme-default/scss/tooltip';
 
 /* -------------------------------------------------------------------------- */
 /*                                    Main                                    */

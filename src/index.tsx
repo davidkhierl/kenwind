@@ -4,13 +4,16 @@ import App from "./App";
 import { AppTheme } from "./theme";
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={AppTheme}>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

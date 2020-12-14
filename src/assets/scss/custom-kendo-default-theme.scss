@@ -1,3 +1,5 @@
+@import '~@progress/kendo-theme-default/scss/mixins';
+
 /* ---------------------------------- Theme --------------------------------- */
 
 $base-theme: Default;
@@ -28,9 +30,11 @@ $series-f: #aa46be;
 $base-border: darken($base-bg, 8%);
 $hovered-border: $base-border;
 
-$transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out,
-  border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+$transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+  border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
+// Custom theme Options
+$enable-rounded: true;
 /* --------------------------------- common --------------------------------- */
 
 $base-gradient: none;
@@ -56,9 +60,23 @@ $primary-button-hovered-bg: lighten($primary-button-bg, 8%);
 $primary-button-hovered-gradient: none;
 $primary-button-pressed-shadow: none;
 
+// apply transition to button
 .k-button {
   transition: $transition;
 }
 
 /* ---------------------------------- Input --------------------------------- */
 $input-focused-shadow: none;
+
+/* -------------------------------- PanelBar -------------------------------- */
+// ! PanelBarItem weird bottom border issues
+// !
+// ! action: submitted a ticket to kendo support Dec/13/2020
+// !         applied temporary fix to override the css value
+// !
+// ! reference: #ticket:1498975
+
+// ? location: kendo default theme /scss/popup/_layout.scss
+.k-animation-container {
+  border-radius: 0 !important;
+}
