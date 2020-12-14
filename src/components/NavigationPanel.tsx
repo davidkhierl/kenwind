@@ -55,7 +55,6 @@ const NavigationPanel: React.VFC<NavigationPanelProps> = (props) => {
     (route) => `${route.route}` === location.pathname
   );
 
-  console.log([...uniquePrivateKeyMapper()]);
   const [selected, setSelected] = React.useState(routeIndex?.index);
 
   const expandedMapper = (): string[] => {
