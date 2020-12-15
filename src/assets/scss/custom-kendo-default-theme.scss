@@ -72,11 +72,16 @@ $input-focused-shadow: none;
 // ! PanelBarItem weird bottom border issues
 // !
 // ! action: submitted a ticket to kendo support Dec/13/2020
-// !         applied temporary fix to override the css value
+// !         applied temporary fix to override the css value.
+// ?         update(Dec/15/2020): Applied fix as suggested
+// ?         from support.
 // !
 // ! reference: #ticket:1498975
-
+// !
+// *
+// * Status: Resolved ✅
+// *
 // ? location: kendo default theme /scss/popup/_layout.scss
-.k-animation-container {
-  border-radius: 0 !important;
+.k-panelbar .k-animation-container {
+  border-radius: 0 0 0px 0px;
 }
