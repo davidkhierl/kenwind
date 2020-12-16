@@ -1,8 +1,8 @@
 import { Button, ButtonGroup } from '@progress/kendo-react-buttons';
 
-import ComponentCard from '../components/ComponentCard';
+import ComponentCard from '../../components/ComponentCard';
 import React from 'react';
-import sharingImg from '../assets/images/sharing.png';
+import sharingImg from '../../assets/images/sharing.png';
 
 const ButtonPage = () => {
   return (

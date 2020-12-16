@@ -1,91 +1,101 @@
-import { PanelBar, PanelBarItem, PanelBarSelectEventArguments } from '@progress/kendo-react-layout';
+import {
+  PanelBar,
+  PanelBarSelectEventArguments,
+  PanelBarUtils,
+} from '@progress/kendo-react-layout';
+import { flattenRoutes, routesPrivateKeyMapper } from '../utils/routeUtils';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import React from 'react';
-
-export interface NavigationRoute {
-  id?: string;
-  title: string;
-  route: string;
-  subRoutes?: NavigationRoute[];
-}
+import { Route } from '../routes';
+import useRouteStore from '../hooks/useRouteStore';
 
 export interface NavigationPanelProps {
-  routes: NavigationRoute[];
+  routes: Route[];
 }
 const NavigationPanel: React.VFC<NavigationPanelProps> = (props) => {
   const location = useLocation();
 
   const history = useHistory();
 
-  const panelBarItemGenerator = function* (
-    routes: NavigationRoute[] = props.routes,
-    routePrefix = ''
-  ): Generator<React.ReactElement<typeof PanelBarItem>> {
-    for (const { id, route, subRoutes, title } of routes) {
-      const newRoute = `${routePrefix}${route}`;
-      yield !subRoutes ? (
-        <PanelBarItem id={id} title={title} route={newRoute} />
-      ) : (
-        <PanelBarItem id={id} title={title}>
-          {[...panelBarItemGenerator(subRoutes, newRoute)]}
-        </PanelBarItem>
-      );
-    }
-  };
+  const routes = useRouteStore((state) => state.routes);
 
-  const uniquePrivateKeyMapper = React.useCallback(
-    function* (
-      routes: NavigationRoute[] = props.routes,
-      routePath = '',
-      parentKey = ''
-    ): Generator<Omit<NavigationRoute & { index: string }, 'subRoutes'>> {
-      for (const [key, routeEntries] of routes.entries()) {
-        const { subRoutes, ...route } = routeEntries;
-        const newKey = `${parentKey}.${key}`;
-        const newRoutePath = `${routePath}${route.route}`;
-        yield { ...route, route: newRoutePath, index: newKey };
-        if (subRoutes) yield* uniquePrivateKeyMapper(subRoutes, newRoutePath, newKey);
-      }
-    },
-    [props.routes]
-  );
+  // const panelBarItemGenerator = function* (
+  //   routes: Route[] = props.routes,
+  //   pathPrefix = ''
+  // ): Generator<React.ReactElement<typeof PanelBarItem>> {
+  //   for (const { id, path, subRoutes, title } of routes) {
+  //     const newRoute = `${pathPrefix}${path}`;
+  //     yield !subRoutes ? (
+  //       <PanelBarItem id={id} title={title} route={newRoute} />
+  //     ) : (
+  //       <PanelBarItem id={id} title={title}>
+  //         {[...panelBarItemGenerator(subRoutes, newRoute)]}
+  //       </PanelBarItem>
+  //     );
+  //   }
+  // };
 
-  const routeIndex = [...uniquePrivateKeyMapper()].find(
-    (route) => `${route.route}` === location.pathname
-  );
+  // const uniquePrivateKeyMapper = React.useCallback(
+  //   function* (
+  //     routes: Route[] = props.routes,
+  //     routePath = '',
+  //     parentKey = ''
+  //   ): Generator<Omit<Route & { index: string }, 'subRoutes'>> {
+  //     for (const [key, routeEntries] of routes.entries()) {
+  //       const { subRoutes, ...route } = routeEntries;
+  //       const newKey = `${parentKey}.${key}`;
+  //       const newRoutePath = `${routePath}${route.path}`;
+  //       yield { ...route, path: newRoutePath, index: newKey };
+  //       if (subRoutes) yield* uniquePrivateKeyMapper(subRoutes, newRoutePath, newKey);
+  //     }
+  //   },
+  //   [props.routes]
+  // );
 
-  const [selected, setSelected] = React.useState(routeIndex?.index);
+  // const routeIndex = [...uniquePrivateKeyMapper()].find(
+  //   (route) => `${route.path}` === location.pathname
+  // );
 
-  const expandedMapper = (): string[] => {
-    let mapped: string[] = [];
-    let keyToMap = routeIndex?.index.substring(0, routeIndex.index.length - 2);
-    if (keyToMap)
-      for (; keyToMap?.length >= 2; ) {
-        mapped.push(keyToMap);
-        keyToMap = keyToMap.substring(0, keyToMap.length - 2);
-      }
-    return mapped;
-  };
+  // const [selected, setSelected] = React.useState(routeIndex?.index);
 
-  React.useEffect(() => {
-    const routes = [...uniquePrivateKeyMapper()];
-    const routeIndex = routes.find((route) => route.route === location.pathname);
-    setSelected(routeIndex ? routeIndex.index : '');
-  }, [location.pathname, uniquePrivateKeyMapper]);
+  // const expandedMapper = (): string[] => {
+  //   let mapped: string[] = [];
+  //   let keyToMap = routeIndex?.index.substring(0, routeIndex.index.length - 2);
+  //   if (keyToMap)
+  //     for (; keyToMap?.length >= 2; ) {
+  //       mapped.push(keyToMap);
+  //       keyToMap = keyToMap.substring(0, keyToMap.length - 2);
+  //     }
+  //   return mapped;
+  // };
+
+  // React.useEffect(() => {
+  //   const routes = [...uniquePrivateKeyMapper()];
+  //   const routeIndex = routes.find((route) => route.path === location.pathname);
+  //   setSelected(routeIndex ? routeIndex.index : '');
+  // }, [location.pathname, uniquePrivateKeyMapper]);
 
   const handleOnSelect = (event: PanelBarSelectEventArguments) => {
-    const route = event.target.props.route;
-    if (route) {
-      route !== location.pathname && history.push(route);
+    const path = event.target.props.path;
+    if (path) {
+      path !== location.pathname && history.push(path);
     }
+    console.log(event.target.props.parentUniquePrivateKey);
+    console.log(event.target.props.uniquePrivateKey);
   };
 
-  return (
-    <PanelBar expanded={[...expandedMapper()]} selected={selected} onSelect={handleOnSelect}>
-      {[...panelBarItemGenerator()]}
-    </PanelBar>
+  // const sideBarItems = [...sideBarItemGenerator(props.routes)];
+
+  const routesWithInitialSelected = routes.map((route) =>
+    route.path === location.pathname ? { ...route, selected: true } : route
   );
+
+  const panelBarItems = PanelBarUtils.mapItemsToComponents(routesWithInitialSelected);
+
+  // console.log([...routePrivateKeyMapper(routes)]);
+  // console.log(recursive(routes));
+  return <PanelBar onSelect={handleOnSelect} children={panelBarItems} />;
 };
 
 export default NavigationPanel;

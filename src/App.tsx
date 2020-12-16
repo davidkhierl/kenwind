@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 
-import ButtonPage from './pages/ButtonPage';
+import ButtonPage from './pages/Components/ButtonPage';
 import NavigationPanel from './components/NavigationPanel';
 import React from 'react';
 import routes from './routes';
