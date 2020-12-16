@@ -85,7 +85,7 @@ export const routesPrivateKeyMapper = (
     };
   });
 
-export function* flattenRoutes(routes: Route[]): Generator<Omit<Route, 'children'>> {
+export function* flattenRoutes(routes: Route[]): Iterable<Omit<Route, 'children'>> {
   for (const routeEntry of routes) {
     const { children, ...route } = routeEntry;
     yield { ...route };
