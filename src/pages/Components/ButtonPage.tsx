@@ -6,11 +6,11 @@ import sharingImg from '../../assets/images/sharing.png';
 
 const ButtonPage = () => {
   return (
-    <div className='grid gap-y-6'>
+    <div className='grid flex-grow gap-y-6'>
       <ComponentCard
         title='Button'
         refLink='https://www.telerik.com/kendo-react-ui/components/buttons/button/'>
-        <div className='grid grid-cols-1 gap-4 md:grid-cols-6 auto-rows-max '>
+        <div className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-6 auto-rows-max '>
           <Button>Default</Button>
           <Button primary>Primary</Button>
           <Button disabled>Disabled</Button>
@@ -20,13 +20,49 @@ const ButtonPage = () => {
             Fontawesome
           </Button>
           <Button togglable>Togglable</Button>
-          <Button togglable>Togglable</Button>
           <Button look='flat'>Flat</Button>
           <Button look='outline'>Outline</Button>
           <Button look='clear'>Clear</Button>
         </div>
       </ComponentCard>
+
       <ComponentCard title='ButtonGroup'>
+        <ButtonGroup>
+          <Button togglable>Button 1</Button>
+          <Button togglable>Button 2</Button>
+          <Button togglable>Button 3</Button>
+        </ButtonGroup>
+      </ComponentCard>
+
+      <ComponentCard title='Chip'>
+        <ButtonGroup>
+          <Button togglable>Button 1</Button>
+          <Button togglable>Button 2</Button>
+          <Button togglable>Button 3</Button>
+        </ButtonGroup>
+      </ComponentCard>
+      <ComponentCard title='ChipList'>
+        <ButtonGroup>
+          <Button togglable>Button 1</Button>
+          <Button togglable>Button 2</Button>
+          <Button togglable>Button 3</Button>
+        </ButtonGroup>
+      </ComponentCard>
+      <ComponentCard title='DropDownButton'>
+        <ButtonGroup>
+          <Button togglable>Button 1</Button>
+          <Button togglable>Button 2</Button>
+          <Button togglable>Button 3</Button>
+        </ButtonGroup>
+      </ComponentCard>
+      <ComponentCard title='SplitButton'>
+        <ButtonGroup>
+          <Button togglable>Button 1</Button>
+          <Button togglable>Button 2</Button>
+          <Button togglable>Button 3</Button>
+        </ButtonGroup>
+      </ComponentCard>
+      <ComponentCard title='Toolbar'>
         <ButtonGroup>
           <Button togglable>Button 1</Button>
           <Button togglable>Button 2</Button>

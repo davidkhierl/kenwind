@@ -23,6 +23,7 @@
 // @import "~@progress/kendo-theme-default/scss/all";
 // @import "~@progress/kendo-theme-default/scss/appbar";
 @import '~@progress/kendo-theme-default/scss/button';
+@import '~@progress/kendo-theme-default/scss/loader';
 // @import "~@progress/kendo-theme-default/scss/card";
 // @import "~@progress/kendo-theme-default/scss/drawer";
 // @import "~@progress/kendo-theme-default/scss/menu";
@@ -34,6 +35,12 @@
 /* -------------------------------------------------------------------------- */
 /*                                    Main                                    */
 /* -------------------------------------------------------------------------- */
+
+html,
+body,
+#root {
+  height: 100%;
+}
 
 // use this when using fontawesome icon in buttons
 .btn-fa {
