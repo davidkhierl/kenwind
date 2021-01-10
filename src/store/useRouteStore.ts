@@ -19,6 +19,9 @@ type RouteStore = {
   flattenedRoutesWithPrivateKey: typeof flattenedRoutesWithPrivateKey;
 };
 
+/**
+ * Routes store
+ */
 const useRouteStore = create<RouteStore>((set) => ({
   routes,
   flattenedRoutes,

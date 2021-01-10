@@ -1,9 +1,9 @@
-import { faBug, faLink } from "@fortawesome/free-solid-svg-icons";
+import { faBug, faLink } from '@fortawesome/free-solid-svg-icons';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Tooltip } from "@progress/kendo-react-tooltip";
-import { useMediaQuery } from "react-responsive";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { Tooltip } from '@progress/kendo-react-tooltip';
+import { useMediaQuery } from 'react-responsive';
 
 interface ComponentCardProps {
   title?: string;
@@ -32,12 +32,14 @@ const ComponentCard: React.FC<ComponentCardProps & React.HTMLAttributes<HTMLDivE
       className='flex flex-col'
       onMouseEnter={() => setIsLinkVisible(isMobile || true)}
       onMouseLeave={() => setIsLinkVisible(isMobile || false)}>
-      <div className='flex flex-col md:flex-row items-start md:items-center mb-3 text-gray-500 h-4'>
-        {title && <h1 className={`text-lg font-bold${refLink ? " mr-2" : ""}`}>{title}</h1>}
+      <div className='flex flex-col items-start h-4 mb-3 text-gray-500 md:flex-row md:items-center'>
+        {title && (
+          <h1 className={`flex-shrink-0 text-lg font-bold${refLink ? ' mr-2' : ''}`}>{title}</h1>
+        )}
         {!isMobile && isLinkVisible && (
-          <div className='flex w-full justify-between'>
+          <div className='flex justify-between w-full'>
             {refLink && (
-              <Tooltip anchorElement='target' position={isMobile ? "auto" : "right"}>
+              <Tooltip anchorElement='target' position={isMobile ? 'auto' : 'right'}>
                 <a
                   href={refLink}
                   target='_blank'
@@ -65,7 +67,7 @@ const ComponentCard: React.FC<ComponentCardProps & React.HTMLAttributes<HTMLDivE
       </div>
       <div
         {...props}
-        className={`bg-white p-6 shadow-md rounded-md${className ? ` ${className}` : ""}`}>
+        className={`bg-white p-6 shadow-md rounded-md${className ? ` ${className}` : ''}`}>
         {children}
       </div>
     </div>

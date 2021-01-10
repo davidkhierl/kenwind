@@ -10,7 +10,9 @@ const App = () => {
   const routes = useRouteStore((state) => state.flattenedRoutes);
 
   const pageRoutes = remove(
-    routes.map(({ title, ...route }) => (route.path ? <Route {...route} /> : undefined)),
+    routes.map(({ title, ...route }, key) =>
+      route.path ? <Route key={key} {...route} /> : undefined
+    ),
     (route) => route !== undefined
   );
 

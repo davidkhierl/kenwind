@@ -1,9 +1,8 @@
-import { LazyExoticComponent, lazy } from 'react';
-
 import { RouteProps } from 'react-router-dom';
 import componentsRoute from './componentsRoute';
 import contributorsRoute from './contributorsRoute';
 import gettingStartedRoute from './gettingStartedRoute';
+import { lazy } from 'react';
 import recipesRoute from './recipesRoute';
 
 const LandingPage = lazy(() => import('../pages/LandingPage'));
