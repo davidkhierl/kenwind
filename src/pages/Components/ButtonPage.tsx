@@ -26,32 +26,12 @@ const ButtonPage = () => {
         </div>
       </ComponentCard>
 
-      <ComponentCard
-        title='ButtonGroup'
-        refLink='https://www.telerik.com/kendo-react-ui/components/buttons/buttongroup/'>
-        <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 auto-rows-max '>
-          <ButtonGroup>
-            <Button togglable>Bold</Button>
-            <Button togglable>Italic</Button>
-            <Button togglable>Underline</Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button togglable icon='bold' />
-            <Button togglable icon='italic' />
-            <Button togglable icon='underline' />
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button togglable icon='bold'>
-              Bold
-            </Button>
-            <Button togglable icon='italic'>
-              Italic
-            </Button>
-            <Button togglable icon='underline'>
-              Underline
-            </Button>
-          </ButtonGroup>
-        </div>
+      <ComponentCard title='ButtonGroup'>
+        <ButtonGroup>
+          <Button togglable>Button 1</Button>
+          <Button togglable>Button 2</Button>
+          <Button togglable>Button 3</Button>
+        </ButtonGroup>
       </ComponentCard>
 
       <ComponentCard title='Chip'>
